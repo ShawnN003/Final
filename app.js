@@ -13,6 +13,9 @@ app.get('/', (req, res) =>{
     res.render('home');
 });
 
+app.get('/ttt', (req, res) =>{
+    res.render('ttt');
+})
 app.get('/rpsPlayerOne', (req, res) => {
     res.render('rpsPlayerOne');
 });
