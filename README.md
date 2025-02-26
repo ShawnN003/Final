@@ -17,6 +17,7 @@ Low Priority:
     ttt ejs
     Gather images
     Add deep styling
+    label anything clickable with a class to style on hover
 
 
 
