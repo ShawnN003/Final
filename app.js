@@ -63,21 +63,21 @@ app.get('/ttt', (req, res) =>{
 app.get('/rpsPlayerOne', async(req, res) => {
     const conn = await connect();
 
-    const order = {
+    const userData = {
         userid: req.body.userid,
         score: req.body.lname,
         }
 
-    const orders = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
+    const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
         userid varchar(255),
         score int
         )`);
 
-    const insertQuery = await conn.query(`insert into scores 
-        (userid, score)`,
-        "TestingID", 1234);
+     const insertQuery = await conn.query(`insert into scores 
+         (userid, score)
+         values ("FINALTESTING", 0000)`);
     
-        console.log(insertQuery);
+    console.log(insertQuery);
     res.render('rpsPlayerOne');
 });
 app.get('/rpsPlayerTwo', async(req, res) =>{
