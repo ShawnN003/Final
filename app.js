@@ -11,9 +11,9 @@ import mariadb from 'mariadb';
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
-    password: '', //I think this will be unique for each of us...
-    database: '',//We need to decide on a name
-    port: '',//not sure if this is specific to the db or just choose and empty port
+    password: '1234', //I think this will be unique for each of us...
+    database: 'gameapp',//We need to decide on a name
+    port: '3306',//not sure if this is specific to the db or just choose and empty port
 })
 
 
@@ -60,10 +60,27 @@ app.get('/', (req, res) =>{
 app.get('/ttt', (req, res) =>{
     res.render('ttt');
 })
-app.get('/rpsPlayerOne', (req, res) => {
+app.get('/rpsPlayerOne', async(req, res) => {
+    const conn = await connect();
+
+    const order = {
+        userid: req.body.userid,
+        score: req.body.lname,
+        }
+
+    const orders = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
+        userid varchar(255),
+        score int
+        )`);
+
+    const insertQuery = await conn.query(`insert into scores 
+        (userid, score)`,
+        "TestingID", 1234);
+    
+        console.log(insertQuery);
     res.render('rpsPlayerOne');
 });
-app.get('/rpsPlayerTwo', (req, res) =>{
+app.get('/rpsPlayerTwo', async(req, res) =>{
     res.render('rpsPlayerTwo')
 }) 
 app.listen(PORT, () => {
