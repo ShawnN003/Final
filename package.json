@@ -18,5 +18,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Tasks:",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShawnN003/Final.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShawnN003/Final/issues"
+  },
+  "homepage": "https://github.com/ShawnN003/Final#readme"
 }

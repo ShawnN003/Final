@@ -1,6 +1,13 @@
 import express from 'express'; 
 import mariadb from 'mariadb';
 
+// First: have a sql running on both ends
+// Second: Decide on how many tables and how to split them up (Rock paper scissors first)
+// Third: Have players be able to insert their data into the sql page (Rock paper scissors first)
+//
+//
+
+
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
@@ -20,18 +27,18 @@ async function connect() {
     }
 }
 
-app.get('/admin', async (req, res) => {
+//app.get('/admin', async (req, res) => {
 
     //Connect to the database
-    const conn = await connect();
+    //const conn = await connect();
 
     //Query the database
-    const scores = await conn.query('SELECT scores FROM dbNameHere')//needs a Data base name
+    //const scores = await conn.query('SELECT scores FROM dbNameHere')//needs a Data base name
 
-    console.log(scores);
+//     console.log(scores);
 
-    res.render('score-page', { scores }); //need to add a score page.
-});
+//     res.render('score-page', { scores }); //need to add a score page.
+// });
 
 const app = express();
 
