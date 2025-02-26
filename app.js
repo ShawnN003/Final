@@ -1,7 +1,16 @@
 import express from 'express'; 
+import mariadb from 'mariadb';
+
+const pool = mariadb.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '0831', //I think this will be unique for each of us...
+    database: '',//We need to decide on a name
+})
+
 const app = express();
 
-//for form submisions into a req.body
+//for form submissions into a req.body
 app.use(express.urlencoded({extended:true}));
 
 //use public to load static files (css)
