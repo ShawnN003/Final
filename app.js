@@ -71,7 +71,6 @@ app.get('/rpsPlayerOne', async(req, res) => {
     const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
         userid varchar(255) NOT NULL,
         score int
-        PRIMARY KEY (userid)
         )`);
 
      const insertQuery = await conn.query(`insert into scores 
@@ -115,18 +114,18 @@ app.post('/games', async(req, res) =>{
 
 });
 
-// app.get('/scores', async(req, res) =>{
-//     //Connect to the database
-//     const conn = await connect();
+app.get('/scores', async(req, res) =>{
+    //Connect to the database
+    const conn = await connect();
 
-//     //Query the database
-//     const scores = await conn.query('SELECT scores FROM gameapp')
+    //Query the database
+    const scores = await conn.query('SELECT * FROM scores');
 
-//     console.log(scores);
+    console.log(scores);
 
-//     res.render('scores', { scores }); 
+    res.render('scores', { scores }); 
 
-// } );
+} );
 
 app.listen(PORT, () => {
     console.log(`Server running http://localhost:${PORT}`);
