@@ -11,9 +11,9 @@ import mariadb from 'mariadb';
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
-    password: '1234', //I think this will be unique for each of us...
-    database: 'gameapp',//We need to decide on a name
-    port: '3306',//not sure if this is specific to the db or just choose and empty port
+    password: '0831',
+    database: 'gameapp',
+    port: '3306'
 })
 
 
@@ -65,12 +65,13 @@ app.get('/rpsPlayerOne', async(req, res) => {
 
     const userData = {
         userid: req.body.userid,
-        score: req.body.lname,
+        score: req.body.score
         }
 
     const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
-        userid varchar(255),
+        userid varchar(255) NOT NULL,
         score int
+        PRIMARY KEY (userid)
         )`);
 
      const insertQuery = await conn.query(`insert into scores 
@@ -84,19 +85,48 @@ app.get('/rpsPlayerTwo', async(req, res) =>{
     res.render('rpsPlayerTwo');
 });
 
-app.get('/scores', async(req, res) =>{
-    //Connect to the database
+app.post('/games', async(req, res) =>{
+
     const conn = await connect();
+    const userData = {
+        userOne: req.body.userOne,
+        userTwo: req.body.userTwo
+        }
+    const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
+        userid varchar(255),
+        score int,
+        PRIMARY KEY (userid)
+        )`);
 
-    //Query the database
-    const scores = await conn.query('SELECT scores FROM gameapp')//needs a Data base name
+    try{
+       const insertQuery = await conn.query(`insert into scores 
+        (userid)
+        values (?)`,
+    [userData.userOne]);
+    const insertQueryTwo = await conn.query(`insert into scores 
+        (userid)
+        values (?)`,
+    [userData.userTwo]); 
+    }catch (err){
+        console.log(err);
+    }
+    console.log("sent")
+    res.render('games');
 
-    console.log(scores);
+});
 
-    res.render('score-page', { scores }); //need to add a score page.
+// app.get('/scores', async(req, res) =>{
+//     //Connect to the database
+//     const conn = await connect();
 
-    res.render('scores');
-} )
+//     //Query the database
+//     const scores = await conn.query('SELECT scores FROM gameapp')
+
+//     console.log(scores);
+
+//     res.render('scores', { scores }); 
+
+// } );
 
 app.listen(PORT, () => {
     console.log(`Server running http://localhost:${PORT}`);
