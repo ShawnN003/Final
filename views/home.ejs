@@ -12,6 +12,7 @@
     <h2>Choose a game, or view recent match history below</h2>
     <div>
         <div>
+            <!--when we validate this, we need to make sure someone can't play against themself-->
             <form action="games" method="post">
                 <label for="userid">Enter Player 1 Username</label><br>
                 <input type="text" name="userOne" value=""><br>
@@ -20,11 +21,7 @@
                 <input type="submit" value="Submit">
               </form> 
         </div>
-        <h3>Tic Tac Toe</h3>
-        <a href="/ttt">create board</a>
-
-        <h3>Rock Paper Scissors</h3>
-        <a href="/rpsPlayerOne">start</a>
+        
 
     </div>
 
