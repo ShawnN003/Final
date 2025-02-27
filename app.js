@@ -125,8 +125,8 @@ app.post('/winner', async(req, res) =>{
     const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [victor]);
     let newScore = 0;
 
-    if(!isNaN(currentScore[0].score)){
-        newScore = currentScore[0].score +1;
+    if(!isNaN(currentScore[0])){
+        newScore = currentScore[0] +1;
     }else{
         newScore = 1;
     }
