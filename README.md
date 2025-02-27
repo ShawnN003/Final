@@ -1,11 +1,9 @@
 Tasks:
 
 High Priority:
-    Maria Pool stuff
-    make a DB
-    add admin page
-    add a score page and add to admin route
-    pick a name for the DB and add to admin route
+    UserName input && storing the database
+    Validation (Checking if the user inputed a username)
+    Run a smooth game after high priority is done
 
 
 Mid Priority:
