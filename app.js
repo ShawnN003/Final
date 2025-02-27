@@ -11,7 +11,7 @@ import mariadb from 'mariadb';
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
-    password: '0831',
+    password: '1234',
     database: 'gameapp',
     port: '3306'
 })
@@ -110,6 +110,11 @@ app.post('/games', async(req, res) =>{
     console.log(userData);
     res.render('games', {userData});
 
+});
+app.get('/winner', (req, res) => {
+
+    // Send our winner page as a response
+    res.render('winner');
 });
 
 app.post('/winner', async(req, res) =>{

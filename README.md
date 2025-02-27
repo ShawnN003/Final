@@ -4,6 +4,7 @@ High Priority:
     UserName input && storing the database
     Validation (Checking if the user inputed a username)
     Run a smooth game after high priority is done
+    Record the game type? Rock paper scissors or tic-tac-toe
 
 
 Mid Priority:
