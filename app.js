@@ -81,8 +81,23 @@ app.get('/rpsPlayerOne', async(req, res) => {
     res.render('rpsPlayerOne');
 });
 app.get('/rpsPlayerTwo', async(req, res) =>{
-    res.render('rpsPlayerTwo')
-}) 
+    res.render('rpsPlayerTwo');
+});
+
+app.get('/scores', async(req, res) =>{
+    //Connect to the database
+    const conn = await connect();
+
+    //Query the database
+    const scores = await conn.query('SELECT scores FROM gameapp')//needs a Data base name
+
+    console.log(scores);
+
+    res.render('score-page', { scores }); //need to add a score page.
+
+    res.render('scores');
+} )
+
 app.listen(PORT, () => {
     console.log(`Server running http://localhost:${PORT}`);
 });
