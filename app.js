@@ -154,10 +154,11 @@ app.get('/scores', async(req, res) =>{
     //Query the database
     const scores = await conn.query('SELECT * FROM scores');
 
-    console.log(scores);
-
+    //send scores to scores page: we should update the sql to order by highest wins
     res.render('scores', { scores }); 
 });
+
+
 
 app.listen(PORT, () => {
     console.log(`Server running http://localhost:${PORT}`);
