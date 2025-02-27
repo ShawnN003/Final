@@ -11,5 +11,15 @@
 
         <h3>Rock Paper Scissors</h3>
         <a href="/rpsPlayerOne">start</a>
+
+        <form action ="winner" method="post">
+            <label>PlayerOne wins</label>
+            <input type="submit" name="winner" value= "<%=userData.userOne%>">
+
+            <label>PlayerTwo wins</label>
+            <input type="submit" name="winner" value= "<%=userData.userTwo%>">
+        </form>
+
+      
 </body>
 </html>

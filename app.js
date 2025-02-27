@@ -27,18 +27,7 @@ async function connect() {
     }
 }
 
-//app.get('/admin', async (req, res) => {
 
-    //Connect to the database
-    //const conn = await connect();
-
-    //Query the database
-    //const scores = await conn.query('SELECT scores FROM dbNameHere')//needs a Data base name
-
-//     console.log(scores);
-
-//     res.render('score-page', { scores }); //need to add a score page.
-// });
 
 const app = express();
 
@@ -52,10 +41,16 @@ app.use (express.static('public'));
 
 
 const PORT = 3000;
+let playerOne;
+let playerTwo;
+
+
 
 app.get('/', (req, res) =>{
     res.render('home');
 });
+
+
 
 app.get('/ttt', (req, res) =>{
     res.render('ttt');
@@ -84,12 +79,15 @@ app.get('/rpsPlayerTwo', async(req, res) =>{
     res.render('rpsPlayerTwo');
 });
 
+
 app.post('/games', async(req, res) =>{
 
     const conn = await connect();
+    playerOne = req.body.userOne;
+    playerTwo = req.body.userTwo;
     const userData = {
-        userOne: req.body.userOne,
-        userTwo: req.body.userTwo
+        userOne: playerOne,
+        userTwo: playerTwo
         }
     const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
         userid varchar(255),
@@ -109,9 +107,39 @@ app.post('/games', async(req, res) =>{
     }catch (err){
         console.log(err);
     }
-    console.log("sent")
-    res.render('games');
+    console.log(userData);
+    res.render('games', {userData});
 
+});
+
+app.post('/winner', async(req, res) =>{
+    const conn = await connect();
+    const victor = req.body.winner;
+    const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [victor]);
+    let newScore = 0;
+
+    if(!isNaN(currentScore[0].score)){
+        newScore = currentScore[0].score +1;
+    }else{
+        newScore = 1;
+    }
+    
+    console.log(currentScore);
+    console.log(victor);
+
+    const player ={
+        userid: victor,
+        score: newScore
+    }
+    try{
+        const database = await conn.query(`UPDATE scores 
+            SET score = ?
+            WHERE userid = ?`,
+        [player.score, player.userid]);
+        res.render('winner', {player})
+    }catch(err){
+        console.log(err);
+    }
 });
 
 app.get('/scores', async(req, res) =>{
@@ -124,8 +152,7 @@ app.get('/scores', async(req, res) =>{
     console.log(scores);
 
     res.render('scores', { scores }); 
-
-} );
+});
 
 app.listen(PORT, () => {
     console.log(`Server running http://localhost:${PORT}`);
