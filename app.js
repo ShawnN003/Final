@@ -1,6 +1,8 @@
 import express from 'express'; 
 import mariadb from 'mariadb';
+import dotenv from 'dotenv';
 
+dotenv.config();
 // First: have a sql running on both ends
 // Second: Decide on how many tables and how to split them up (Rock paper scissors first)
 // Third: Have players be able to insert their data into the sql page (Rock paper scissors first)
@@ -9,11 +11,11 @@ import mariadb from 'mariadb';
 
 
 const pool = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'gameapp',
-    port: '3306'
+    host: process.env.DB_HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 })
 
 
@@ -88,7 +90,7 @@ app.post('/games', async(req, res) =>{
     const userData = {
         userOne: playerOne,
         userTwo: playerTwo
-        }
+        };
     const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
         userid varchar(255),
         score int,
