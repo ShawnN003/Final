@@ -80,7 +80,7 @@ app.post('/games', async(req, res) =>{
         };
     const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
         userid varchar(255),
-        score int,
+        score INT,
         PRIMARY KEY (userid)
         )`);
     try{
@@ -159,20 +159,19 @@ app.post('/winner', async(req, res) =>{
         victor = "No one";
         res.render('winner', {victor})
     }
-    const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [victor]);
-    let newScore = 0;
-
-    if(!isNaN(currentScore[0])){
-        newScore = currentScore[0] +1;
-    }else{
-        newScore = 1;
-    }
-    
-    console.log(currentScore);
-    console.log("victor: " + victor);
-
 
     try{
+        const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [victor]);
+        let newScore = 0;
+
+        console.log(victor +"'s current score: "+currentScore[0].score);
+        
+        console.log("+1")
+        newScore = currentScore[0].score +1;
+        
+        console.log("updated score: " + newScore)
+        console.log("victor: " + victor);
+
         const database = await conn.query(`UPDATE scores 
             SET score = ?
             WHERE userid = ?`,
