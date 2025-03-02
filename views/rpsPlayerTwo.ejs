@@ -7,16 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    <form action = "winner" method = "get">
+    <h1>Player Two <%=userData.userTwo.name %></h1>
+    
+    <form action = "winner" method = "post">
+        <input type="hidden" name="userOne" value="<%= userData.userOne.name %>">
+        <input type="hidden" name="userOneChoice" value="<%= userData.userOne.choice %>">
+        <input type="hidden" name="userTwo" value="<%= userData.userTwo.name %>">
 
-    <h1>Player Two</h1>
-    <input type="submit" value="Rock"><br>
-    <input type="submit" value="Paper"><br>
-    <input type="submit" value="Scissors"><br>
+        <label for="choice">Select an option:</label><br>
+        <label for="rock">Rock</label>
+        <input type="radio" name="choice" value="rock"><br>
 
+        <label for="paper">Paper</label>
+        <input type="radio" name="choice" value="paper"><br>
+
+        <label for="scissors">Scissors</label>
+        <input type="radio" name="choice" value="scissors"><br>
+
+        <input type="submit" value="Submit">
+    </form>
     
     <!--<a href="/rpsPlayerOne">End Turn</a>-->
     <a href="/">home</a>
-    </form>
+    
 </body>
 </html>

@@ -12,11 +12,10 @@
         <h3>Rock Paper Scissors</h3>
         <a href="/rpsPlayerOne">start</a>
 
-        <form action ="winner" method="post">
-            <label>PlayerOne wins</label>
-            <input type="submit" name="winner" value= "<%=userData.score%>"> 
-            <label>PlayerTwo wins</label>
-            <input type="submit" name="winner" value= "<%=userData.score%>">
+        <form action ="rpsPlayerOne" method="post">
+            <input type="hidden" name="userOne" value="<%= userData.userOne %>">
+            <input type="hidden" name="userTwo" value="<%= userData.userTwo %>">
+            <input type="submit" name="rps" value="Start">
         </form>
 
       

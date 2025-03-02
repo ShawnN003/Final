@@ -43,85 +43,122 @@ app.use (express.static('public'));
 
 
 const PORT = 3000;
-let playerOne;
-let playerTwo;
 
-
+function  getRpsWinner(oneChoice, twoChoice){
+    if (oneChoice === twoChoice){
+        return "tie";
+    } else if(oneChoice === "rock"){
+        if(twoChoice === "scissors"){
+            return "userOne";
+        }else{
+            return "userTwo";
+        }
+    }else if(oneChoice === "paper"){
+        if(twoChoice === "rock"){
+            return "userOne";
+        }else{
+            return "userTwo";
+        }
+    }else{
+        if(twoChoice === "paper"){
+            return "userOne";
+        }else{
+            return "userTwo";
+        }
+    }
+}
 
 app.get('/', (req, res) =>{
     res.render('home');
 });
 
-
-
-app.get('/ttt', (req, res) =>{
-    res.render('ttt');
-})
-app.get('/rpsPlayerOne', async(req, res) => {
-    const conn = await connect();
-
-    const userData = {
-        userid: req.body.userid,
-        score: req.body.score
-        }
-
-    const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
-        userid varchar(255) NOT NULL,
-        score int
-        )`);
-
-     const insertQuery = await conn.query(`insert into scores 
-         (userid, score)
-         values ("FINALTESTING", 0000)`);
-    
-    console.log(insertQuery);
-    res.render('rpsPlayerOne');
-});
-app.get('/rpsPlayerTwo', async(req, res) =>{
-    res.render('rpsPlayerTwo');
-});
-
-
 app.post('/games', async(req, res) =>{
-
     const conn = await connect();
-    playerOne = req.body.userOne;
-    playerTwo = req.body.userTwo;
     const userData = {
-        userOne: playerOne,
-        userTwo: playerTwo
+        userOne: req.body.userOne,
+        userTwo:  req.body.userTwo
         };
     const database = await conn.query(`CREATE TABLE IF NOT EXISTS scores (
         userid varchar(255),
         score int,
         PRIMARY KEY (userid)
         )`);
-
     try{
        const insertQuery = await conn.query(`insert into scores 
         (userid)
         values (?)`,
-    [userData.userOne]);
-    const insertQueryTwo = await conn.query(`insert into scores 
+        [userData.userOne]);
+        const insertQueryTwo = await conn.query(`insert into scores 
         (userid)
         values (?)`,
-    [userData.userTwo]); 
+        [userData.userTwo]); 
     }catch (err){
         console.log(err);
     }
-    console.log(userData);
-    res.render('games', {userData});
-
+    console.log(userData.userOne + " posted to games");
+    res.render('games', { userData });
 });
-app.get('/winner', (req, res) => {
 
-    // Send our winner page as a response
-    res.render('winner');
+app.get('/ttt', (req, res) =>{
+    res.render('ttt');
+})
+
+
+app.post('/rpsPlayerOne', async(req, res) => {
+    const userData = {
+        userOne: req.body.userOne,
+        userTwo: req.body.userTwo
+    }
+    
+    res.render('rpsPlayerOne', {userData});
 });
+
+
+app.post('/rpsPlayerTwo', async(req, res) =>{
+    const userData ={
+        userOne: {
+            name: req.body.userOne,
+            choice: req.body.choice
+        },
+        userTwo:{ 
+            name: req.body.userTwo,
+            choice: ""
+        }
+    }
+    console.log(userData.userOne.name);
+    console.log(userData.userOne.choice);
+    res.render('rpsPlayerTwo', {userData});
+});
+
+
+
+
 
 app.post('/winner', async(req, res) =>{
     const conn = await connect();
-    const victor = req.body.winner;
+
+    const userData ={
+        userOne: {
+            name: req.body.userOne,
+            choice: req.body.userOneChoice
+        },
+        userTwo:{ 
+            name: req.body.userTwo,
+            choice: req.body.choice
+        }
+    }
+    console.log(userData.userOne.name + userData.userOne.choice);
+    console.log(userData.userTwo.name + userData.userTwo.choice);
+    let victor = getRpsWinner(userData.userOne.choice, userData.userTwo.choice);
+    console.log(victor)
+    if(victor === "userOne"){
+        victor = userData.userOne.name;
+    }else if(victor === "userTwo"){
+        victor = userData.userTwo.name;
+    }else{
+        victor = "No one";
+        res.render('winner', {victor})
+    }
     const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [victor]);
     let newScore = 0;
 
@@ -132,18 +169,15 @@ app.post('/winner', async(req, res) =>{
     }
     
     console.log(currentScore);
-    console.log(victor);
+    console.log("victor: " + victor);
 
-    const player ={
-        userid: victor,
-        score: newScore
-    }
+
     try{
         const database = await conn.query(`UPDATE scores 
             SET score = ?
             WHERE userid = ?`,
-        [player.score, player.userid]);
-        res.render('winner', {player})
+        [newScore, victor]);
+        res.render('winner', {victor})
     }catch(err){
         console.log(err);
     }

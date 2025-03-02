@@ -1,8 +1,8 @@
 Tasks:
 
 High Priority:
-    UserName input && storing the database
-    Validation (Checking if the user inputed a username)
+        UserName input && storing the database
+    Validation (Checking if the user inputted a username)
     Run a smooth game after high priority is done
     Record the game type? Rock paper scissors or tic-tac-toe
 
@@ -10,7 +10,7 @@ High Priority:
 Mid Priority:
     rock paper scissors ejs
     home ejs
-    functionality of the games
+        functionality of the games
 
 Low Priority:
     ttt ejs
