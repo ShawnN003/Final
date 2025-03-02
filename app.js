@@ -147,8 +147,7 @@ app.post('/winner', async(req, res) =>{
             choice: req.body.choice
         }
     }
-    console.log(userData.userOne.name + userData.userOne.choice);
-    console.log(userData.userTwo.name + userData.userTwo.choice);
+    
     let victor = getRpsWinner(userData.userOne.choice, userData.userTwo.choice);
     console.log(victor)
     if(victor === "userOne"){
@@ -187,7 +186,8 @@ app.get('/scores', async(req, res) =>{
     const conn = await connect();
 
     //Query the database
-    const scores = await conn.query('SELECT * FROM scores');
+    const scores = await conn.query(`SELECT * FROM scores
+        ORDER BY score DESC`);
 
     //send scores to scores page: we should update the sql to order by highest wins
     res.render('scores', { scores }); 

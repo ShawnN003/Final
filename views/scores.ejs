@@ -10,10 +10,12 @@
     <div>
         <ol>
             <% for (let i=0; i < scores.length; i++) { %>
-                <li><%= scores[i].userid %> <%= scores[i].score %></li>
+                <li><%= scores[i].userid %>: <%= scores[i].score %></li>
                 
             <% } %>
         </ol>
+        <a href="/">home</a>
     </div>
+    
 </body>
 </html>
