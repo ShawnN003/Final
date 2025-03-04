@@ -95,7 +95,6 @@ app.post('/games', async(req, res) =>{
     }catch (err){
         console.log(err);
     }
-    console.log(userData.userOne + " posted to games");
     res.render('games', { userData });
 });
 
@@ -147,8 +146,8 @@ app.post('/winner', async(req, res) =>{
             choice: req.body.choice
         }
     }
-    console.log(userData.userOne.name + userData.userOne.choice);
-    console.log(userData.userTwo.name + userData.userTwo.choice);
+    console.log(userData.userOne.name + " " +userData.userOne.choice);
+    console.log(userData.userTwo.name + " " +userData.userTwo.choice);
     let victor = getRpsWinner(userData.userOne.choice, userData.userTwo.choice);
     console.log(victor)
     if(victor === "userOne"){
