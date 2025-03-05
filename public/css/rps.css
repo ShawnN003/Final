@@ -1,5 +1,5 @@
 html, body {
-    height: 100%;
+    height: 1000px;
     background-color: black;
   }
 
@@ -16,9 +16,9 @@ html, body {
     width: 60px;
 }
 h1{
-    padding-top: 5.5%;
+    padding-top: 130px;
 }
 
 form{
-    padding-top: 180px;
+    padding-top: 160px;
 }
