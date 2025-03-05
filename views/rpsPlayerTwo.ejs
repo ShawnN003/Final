@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "css/base.css">
+    <link rel = "stylesheet" href = "css/rps.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Player Two <%=userData.userTwo.name %></h1>
+    <div id="game-container">
+
+   
+        <h1>Player Two: <%=userData.userTwo.name%></h1>
+        <!--Some kind of form or button that submits rock, paper, or scissors-->
+        <form action = "winner" method = "post">
+            <input type="hidden" name="userOne" value="<%= userData.userOne.name %>">
+            <input type="hidden" name="userOneChoice" value="<%= userData.userOne.choice %>">
+            <input type="hidden" name="userTwo" value="<%= userData.userTwo.name %>">
+            
+            <label for="rock"><img src="rock.png" alt="rock" class="rps-button">
+            <input type="radio" name="choice" value="rock">
     
-    <form action = "winner" method = "post">
-        <input type="hidden" name="userOne" value="<%= userData.userOne.name %>">
-        <input type="hidden" name="userOneChoice" value="<%= userData.userOne.choice %>">
-        <input type="hidden" name="userTwo" value="<%= userData.userTwo.name %>">
-
-        <label for="choice">Select an option:</label><br>
-        <label for="rock">Rock</label>
-        <input type="radio" name="choice" value="rock"><br>
-
-        <label for="paper">Paper</label>
-        <input type="radio" name="choice" value="paper"><br>
-
-        <label for="scissors">Scissors</label>
-        <input type="radio" name="choice" value="scissors"><br>
-
-        <input type="submit" value="Submit">
-    </form>
+            </label>
+            <label for="paper"><img src="paper.png" alt="paper" class="rps-button">
+            <input type="radio" name="choice" value="paper"><br>
+            </label>
+            <label for="scissors"><img src="scissors.png" alt="scissors" class="rps-button">
+            <input type="radio" name="choice" value="scissors"><br>
+            </label>
+    
+            <input type="submit" value="Submit">
+            
+        </form>
+    </div>
     
     <!--<a href="/rpsPlayerOne">End Turn</a>-->
     <a href="/">home</a>
