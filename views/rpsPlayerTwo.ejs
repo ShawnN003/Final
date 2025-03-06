@@ -18,18 +18,20 @@
             <input type="hidden" name="userOneChoice" value="<%= userData.userOne.choice %>">
             <input type="hidden" name="userTwo" value="<%= userData.userTwo.name %>">
             
-            <label for="rock"><img src="rock.png" alt="rock" class="rps-button">
-            <input type="radio" name="choice" value="rock">
+            
+            
+            <button type="submit" name="choice" value="rock">
+                <img src="rock.png" alt="rock" class="rps-button">
+            </button>
+
+            <button type="submit" name="choice" value="paper"><br>
+                <img src="paper.png" alt="paper" class="rps-button">
+            </button>
+
+            <button type="submit" name="choice" value="scissors"><br>
+                <img src="scissors.png" alt="scissors" class="rps-button">
+            </button>
     
-            </label>
-            <label for="paper"><img src="paper.png" alt="paper" class="rps-button">
-            <input type="radio" name="choice" value="paper"><br>
-            </label>
-            <label for="scissors"><img src="scissors.png" alt="scissors" class="rps-button">
-            <input type="radio" name="choice" value="scissors"><br>
-            </label>
-    
-            <input type="submit" value="Submit">
             
         </form>
     </div>

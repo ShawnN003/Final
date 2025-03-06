@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src = "scripts/client-validation.js" defer></script>
     <link rel = "stylesheet" href = "css/rps.css">
     <title>Document</title>
 </head>
@@ -13,29 +12,26 @@
    
     <h1>Player One: <%=userData.userOne%></h1>
     <!--Some kind of form or button that submits rock, paper, or scissors-->
-    <form action = "rpsPlayerTwo" method = "post" id = "playerOne-val">
+    <form action = "rpsPlayerTwo" method = "post">
         <input type="hidden" name="userOne" value="<%= userData.userOne %>">
         <input type="hidden" name="userTwo" value="<%= userData.userTwo %>">
 
-        
-        <label for="rock"><img src="rock.png" alt="rock" class="rps-button">
-        <input type="radio" name="choice" value="rock">
-        
-        </label>
-        <label for="paper"><img src="paper.png" alt="paper" class="rps-button">
-        <input type="radio" name="choice" value="paper"><br>
-        </label>
-        <label for="scissors"><img src="scissors.png" alt="scissors" class="rps-button">
-        <input type="radio" name="choice" value="scissors"><br>
-        </label>
+        <button type="submit" name="choice" value="rock">
+            <img src="rock.png" alt="rock" class="rps-button">
+        </button>
 
-        <span class = err id = err-playerOne></span>
-        <input type="submit" value="Submit">
+        <button type="submit" name="choice" value="paper">
+            <img src="paper.png" alt="paper" class="rps-button">
+        </button>
+
+        <button type="submit" name="choice" value="scissors"><br>
+            <img src="scissors.png" alt="scissors" class="rps-button">
+        </button>
         
     </form>
 </div>
     <!--<a href="/rpsPlayerTwo">End Turn</a>-->
-    <!--<a href="/">home</a>-->
+    <a href="/">home</a>
     
 </body>
 </html>
