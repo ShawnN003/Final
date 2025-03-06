@@ -10,35 +10,31 @@
     <title>J&S</title>
 </head>
 <body>
-    <div id = "background">
     <h1>J&S Games:</h1>
     <h2>Choose a game, or view recent match history below</h2>
     <div>
         <div>
             <!--when we validate this, we need to make sure someone can't play against themself-->
-            <form action="games" method="post">
+            <form action="games" method="post" id = game-form>
+                <span class = "err" id = "playerOneName">Please Enter a player 1 name</span>
                 <label for="userOne">Enter Player 1 Username</label><br>
-                <input type="text" name="userOne" value=""><br><br>
+                <input type="text" name="userOne" value="" id = "userOne"><br><br>
 
+                <span class = "err" id = playerTwoName>Please Enter a player 2 name</span>
                 <label for="userTwo">Enter Player 2 Username</label><br>
-                <input type="text" name="userTwo" value=""><br><br>
+                <input type="text" name="userTwo" value="" id = "userTwo"><br><br>
 
                 <input type="submit" value="Submit" class = button>
               </form> 
         </div>
         <br>
 
-
-
-        <form action="scores" method="post">
+        <form action="scores" method="get">
             <input type="submit" value="Scoreboard">
         </form> 
 
        
     </div>
-
-</div>
-
     
 </body>
 </html>

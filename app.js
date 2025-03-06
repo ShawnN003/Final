@@ -95,6 +95,7 @@ app.post('/games', async(req, res) =>{
     }catch (err){
         console.log(err);
     }
+    conn.release();
     res.render('games', { userData });
 });
 

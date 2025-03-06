@@ -1,13 +1,36 @@
-document.getElementById("playerOne-val").onsubmit = validate 
-alert("Something is happening");
-//Not running through the if statement
+document.getElementById("game-form").onsubmit = validate 
+
 function validate() {
-    let choice = document.getElementById("choice").value;
-alert("Something NEW is happening")
-    if(choice !=  "rock" || choice !=  "paper" ||choice !=  "scissors")
+    clearErrors();
+    let isValid = true;
+    let playerOne = document.getElementById("userOne").value.trim();
+    let playerTwo = document.getElementById("userTwo").value.trim();
+
+    
+
+    if(playerOne === "")
     {
-        alert("Testing!");
-        document.getElementById("err-playerOne").style.display = "block";
+        document.getElementById("playerOneName").style.display = "block";
+        isValid = false;
     }
-    console.log("This is the first user choice"+choice);
+    if(playerTwo === "")
+    {
+        document.getElementById("playerTwoName").style.display = "block";
+        isValid = false;
+    }
+    // let choice = document.getElementById("choice").value;
+    // if(choice !=  "rock" || choice !=  "paper" ||choice !=  "scissors")
+    // {
+    //     alert("Testing!");
+    //     document.getElementById("err-playerOne").style.display = "block";
+    //     isValid = false;
+    // }
+    return isValid;
 }
+function clearErrors() 
+    {
+        let errors = document.getElementsByClassName("err");
+        for (let i=0; i<errors.length; i++) {
+            errors[i].style.display = "none";
+        }
+    }
