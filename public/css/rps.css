@@ -14,6 +14,7 @@ html, body {
 
 .rps-button{
     width: 60px;
+    height: 60px;
 }
 h1{
     padding-top: 130px;
@@ -21,4 +22,7 @@ h1{
 
 form{
     padding-top: 160px;
+}
+img{
+    height: 100%;
 }
