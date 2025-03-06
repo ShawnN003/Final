@@ -7,7 +7,7 @@ High Priority:
 
 
 Mid Priority:
-    rock paper scissors ejs
+    rock paper scissors ejs - I can't quite get everything to stay lined up when the browser is resized. maybe something with the container they're in or the css. 
     home ejs
     functionality of TTT
     right now we are passing username from page to page. maybe we can store it in a global
@@ -16,7 +16,7 @@ Mid Priority:
 
 Low Priority:
     rps text doesn't line up with background when resizing webpage.
-    rps buttons still have radios, but I'd like to use the image as the button.
+    create and "anonymous" user if the name is left blank.
     highscores page doesn't deal with a missing DB
     home links to sign in, but should probably link to games, with an option to change usernames.
     
