@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "css/base.css">
+    <script src = "scripts/client-validation.js" defer></script>
+
     <!-- <link id = "icon" rel = "icon" type = "image/png" href = "/icecream.png"> -->
     <title>J&S</title>
 </head>
 <body>
+    <div id = "background">
     <h1>J&S Games:</h1>
     <h2>Choose a game, or view recent match history below</h2>
     <div>
@@ -15,19 +18,26 @@
             <!--when we validate this, we need to make sure someone can't play against themself-->
             <form action="games" method="post">
                 <label for="userOne">Enter Player 1 Username</label><br>
-                <input type="text" name="userOne" value=""><br>
+                <input type="text" name="userOne" value=""><br><br>
 
                 <label for="userTwo">Enter Player 2 Username</label><br>
-                <input type="text" name="userTwo" value=""><br> 
+                <input type="text" name="userTwo" value=""><br><br>
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class = button>
               </form> 
         </div>
-        <a href="/scores">highScores</a>
+        <br>
+
+
+
+        <form action="scores" method="post">
+            <input type="submit" value="Scoreboard">
+        </form> 
+
        
     </div>
 
-
+</div>
 
     
 </body>

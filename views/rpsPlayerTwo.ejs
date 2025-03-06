@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "scripts/client-validation.js" defer></script>
     <link rel = "stylesheet" href = "css/rps.css">
     <title>Document</title>
 </head>
@@ -12,7 +13,7 @@
    
         <h1>Player Two: <%=userData.userTwo.name%></h1>
         <!--Some kind of form or button that submits rock, paper, or scissors-->
-        <form action = "winner" method = "post">
+        <form action = "winner" method = "post" id = "playerTwo-val">
             <input type="hidden" name="userOne" value="<%= userData.userOne.name %>">
             <input type="hidden" name="userOneChoice" value="<%= userData.userOne.choice %>">
             <input type="hidden" name="userTwo" value="<%= userData.userTwo.name %>">
@@ -34,7 +35,7 @@
     </div>
     
     <!--<a href="/rpsPlayerOne">End Turn</a>-->
-    <a href="/">home</a>
+    <!--<a href="/">home</a>-->
     
 </body>
 </html>
