@@ -11,5 +11,3 @@ alert("Something NEW is happening")
     }
     console.log("This is the first user choice"+choice);
 }
-
-validate();
