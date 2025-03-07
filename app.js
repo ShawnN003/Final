@@ -99,7 +99,7 @@ app.post('/games', async(req, res) =>{
     res.render('games', { userData });
 });
 
-app.get('/ttt', (req, res) =>{
+app.post('/ttt', (req, res) =>{
     res.render('ttt');
 })
 
