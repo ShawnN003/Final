@@ -176,7 +176,7 @@ app.post('/winner', async(req, res) =>{
             SET score = ?
             WHERE userid = ?`,
         [newScore, victor]);
-        res.render('winner', {victor, userData})
+        res.render('winner', {victor})
     }catch(err){
         console.log(err);
     }
