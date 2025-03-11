@@ -1,6 +1,18 @@
 Tasks:
 
 High Priority: 
+Learned from review:
+The game breaks when it shrinks. (CSS issue) 
+The scoreboard accepts empty values of no one winning a game in general. 
+Another thing we learned was having a home page in the game options would be helpful. Checking the same player names inside the home screen.  
+Rock-Paper-Scissors can still be spoofed. 
+
+Additions to be made: 
+Implementing validation to check spoofing and same username. 
+Adding a route to home page from winner and game options. 
+Ordering the high score to show the highest score first and validating the scoreboard to not accept any empty values. 
+Update CSS to work properly with small screens. 
+
     Run a smooth game after high priority is done
     Record the game type? Rock paper scissors or tic-tac-toe
 
