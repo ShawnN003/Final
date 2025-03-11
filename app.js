@@ -157,7 +157,7 @@ app.post('/winner', async(req, res) =>{
         victor = userData.userTwo.name;
     }else{
         victor = "No one";
-        res.render('winner', {victor})
+        res.render('winner', {victor, userData})
     }
 
     try{
