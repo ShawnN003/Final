@@ -2,6 +2,10 @@ body{
     text-align: center;
     background-image:url("../finalSpaceBackground.jpg");
 }
+h1,h2,h3,label{
+    color: white;
+    font-weight: 900;
+}
 
 div{
     background-color: white;
