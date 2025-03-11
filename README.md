@@ -11,6 +11,8 @@ Mid Priority:
     functionality of TTT
     right now we are passing username from page to page. maybe we can store it in a global
         variable instead?
+    link the home button to games screen instead of log-in. add option to change users on games page.
+    check the database for a name before trying to insert it so the dup entries error message doesn't come up.
 
 
 Low Priority:
