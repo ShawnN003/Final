@@ -7,11 +7,13 @@
     <title>Winner</title>
 </head>
 <body>
-    <form action = "/" method = "get">
+    <form action = "games" method = "post">
 
         <h1> <%=victor%> Wins!</h1><br><br>
-        
-        <input type="submit" value = "home">
+        <input type="hidden" name="userOne" value="<%= userData.userOne.name %>">
+        <input type="hidden" name="userTwo" value="<%= userData.userTwo.name %>">
+
+        <input type="submit" value = "Game Options">
 
     </form>
 </body>
