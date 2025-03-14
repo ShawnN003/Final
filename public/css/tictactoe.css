@@ -8,6 +8,21 @@ h1,h2,h3,label{
 }
 
 div{
-    background-color: white;
-    color: white;
+    border: 1px solid white;
+    width: 230px;
+    height: 230px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.hover{
+    border-color: black;
+}
+.x{
+    background-image:url("../x.jpg");
+    padding:auto;
+}
+.circle{
+    background-image:url("../circle.jpg");
 }
