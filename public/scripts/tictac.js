@@ -3,7 +3,7 @@ let list = document.querySelectorAll('div');
 
 //I don't see an output id in ttt.ejs
 
-let boardStatus =[];
+let boardStatus =['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'];
 let player = "x";
 
 
@@ -36,7 +36,7 @@ for(let i = 0; i <list.length; i++)
     }
     list[i].onclick = function()
     {
-        list[i].className = player;
+        list[i].id = player;
         boardStatus[i]= player;
     }
 
@@ -49,6 +49,7 @@ for(let i = 0; i <list.length; i++)
 
 document.getElementById('user').onclick = function()
 {
+    console.log(checkWin(player));
     if(player === 'x'){
         document.getElementById('uOne').style.display = 'none';
         document.getElementById('uTwo').style.display =  'block';
@@ -58,20 +59,28 @@ document.getElementById('user').onclick = function()
         document.getElementById('uTwo').style.display =  'none';
         player = 'x';
     }
-    console.log("clicked");
-     
+    
+    
 }
 
 function checkWin(player){
+    console.log("checking");
     let status = 0;
+    console.log(boardStatus);
+    let newArr = [
+        [boardStatus[0],boardStatus[1],boardStatus[2],],
+        [boardStatus[3],boardStatus[4],boardStatus[5],],
+        [boardStatus[6],boardStatus[7],boardStatus[8],]
+    ];
+    console.log(newArr);
     //check rows
-    for(let row in boardStatus){
-        for(let box in row){
-            if(box === player){
+    for(let i=0; i < 3; i++){
+        for(let j=0; j < 3; j++){
+            
+            if(newArr[i][j] == player){
                 status++;
                 if(status >= 3){
                     status = 0;
-                    console.log("winner");
                     return true;
                 }
             }
@@ -80,11 +89,11 @@ function checkWin(player){
     }
 
     //check cols
-    for(let i=0; i <= 3; i++){
-        for(let j=0; j < boardStatus[i].length; j++){
-            if(boardStatus[j][i] === player){
+    for(let i=0; i < 3; i++){
+        for(let j=0; j < 3; j++){
+            if(newArr[j][i] == player){
                 status++;
-                if(status >= boardStatus.length){
+                if(status >= 3){
                     status = 0;
                     return true;
                 }
@@ -94,7 +103,13 @@ function checkWin(player){
     }
 
     //check diagonals
-    
+    if(player == newArr[0][0] && player == newArr[1][1] && player == newArr[2][2]){
+        return true;
+    }
+    if(player == newArr[0][2] && player == newArr[1][1] && player == newArr[2][0]){
+        return true;
+    }
+    return false;
 }
 /**
  * Tic Tac Toe implementation plan:

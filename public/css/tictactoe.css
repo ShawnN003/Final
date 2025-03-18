@@ -37,11 +37,11 @@ div{
 .hover{
     border-color: black;
 }
-.x{
+#x{
     background-image:url("../x.jpg");
     padding:auto;
 }
-.circle{
+#circle{
     background-image:url("../circle.png");
     background-size: contain;
 }
