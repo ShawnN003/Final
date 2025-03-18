@@ -100,7 +100,11 @@ app.post('/games', async(req, res) =>{
 });
 
 app.post('/ttt', (req, res) =>{
-    res.render('ttt');
+    const userData = {
+        userOne: req.body.userOne,
+        userTwo: req.body.userTwo
+    }
+    res.render('ttt', { userData });
 })
 
 

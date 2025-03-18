@@ -12,7 +12,10 @@
         <!--<a href="/ttt">create board</a>-->
 
     <form action ="ttt" method="post">
+        <input type="hidden" name="userOne" value="<%= userData.userOne %>">
+        <input type="hidden" name="userTwo" value="<%= userData.userTwo %>">
         <input type="submit" name="ttt" value="Create Board">
+
     </form>
         <h3>Rock Paper Scissors</h3>
         <!--<a href="/rpsPlayerOne">start</a>-->
