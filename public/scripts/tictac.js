@@ -1,6 +1,8 @@
 alert("Connected");
 let list = document.querySelectorAll('div');
 let output = document.getElementById("output");
+//I don't see an output id in ttt.ejs
+
 
 for(let i = 0; i <list.length; i++)
 {
@@ -86,6 +88,14 @@ document.getElementById('user').click = function()
  *  * 
  * Problems:
  * How would we switch users from player one and two? and save those values in the scoreboard? 
+ * --the way I have been doing is just passing both usernames to the pages in hidden inputs. since ttt is going back and forth, we should probably make a boolean variable and just swap it when the player ends their turn.
+ * --to save values, I think we should do a 2d array. This will make our winCheck a little easier. we can loop through a row or column pretty easily. just need to explicitly include diagonal wins
+ * 
+ * 
+ * 
+ * --multiple boxes can be selected
+ * 
+ * 
  * 
  * Plans:
  * Have each div equal a value between 0 and 8 
@@ -93,6 +103,8 @@ document.getElementById('user').click = function()
  * 
  * 
  * Have the user have a button at the bottom of the function to submit their option they clicked. 
+ * 
+ * --there is no way to unselect a choice
  * 
  * Have another function to take the value of the input and switch the user. 
  * 
