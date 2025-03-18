@@ -168,8 +168,6 @@ app.post('/winner', async(req, res) =>{
     try{
         const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [victor]);
         let newScore = 0;
-
-        console.log(victor +"'s current score: "+currentScore[0].score);
         
         console.log("+1")
         newScore = currentScore[0].score +1;
@@ -185,6 +183,19 @@ app.post('/winner', async(req, res) =>{
     }catch(err){
         console.log(err);
     }
+});
+
+app.post('/tttWinner', async(req, res) =>{
+    const conn = await connect();
+    console.log(req.body);
+    let result = req.body.winner;
+    const userData = {
+        userOne: result,
+        userTwo: req.body.loser
+    }
+    console.log(result);
+    conn.release();
+    res.render('tttWinner', {result, userData})
 });
 
 app.get('/scores', async(req, res) =>{

@@ -1,6 +1,11 @@
 Tasks:
 
 High Priority: 
+
+record ttt wins on database
+
+
+
 Learned from review:
 The game breaks when it shrinks. (CSS issue) 
 The scoreboard accepts empty values of no one winning a game in general. 

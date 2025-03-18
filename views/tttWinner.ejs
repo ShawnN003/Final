@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "css/base.css">
+    <title>Winner</title>
+</head>
+<body>
+    <form action = "games" method = "post">
+        
+        <h1> <%=result%> Wins!</h1><br><br>
+        <input type="hidden" name="userOne" value="<%= userData.userOne%>">
+        <input type="hidden" name="userTwo" value="<%= userData.userTwo%>">
+        <input type="submit" value = "Game Options">
+
+    </form>
+    <br><br>
+
+    <form action = "/" method = "get">
+    <input type="submit" value = "Back to Home">
+    </form>
+
+</body>
+</html>
