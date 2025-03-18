@@ -1,7 +1,51 @@
+const { stat } = require("fs");
+
 alert("Connected");
 let list = document.querySelectorAll('div');
 let output = document.getElementById("output");
 //I don't see an output id in ttt.ejs
+
+let boardStatus = [
+    ['a1', 'a2', 'a3'],
+    ['b1', 'b2', 'b3'],
+    ['c1', 'c2', 'c3']
+];
+
+function checkWin(player){
+    let status = 0;
+    //check rows
+    for(let row in boardStatus){
+        for(let box in row){
+            if(box === player){
+                status++;
+                if(status >= boardStatus.length){
+                    status = 0;
+                    return true;
+                }
+            }
+        }
+        status = 0;
+    }
+
+    //check cols
+    for(let i=0; i < boardStatus.length; i++){
+        for(let j=0; j < boardStatus[i].length; j++){
+            if(boardStatus[j][i] === player){
+                status++;
+                if(status >= boardStatus.length){
+                    status = 0;
+                    return true;
+                }
+            }
+        }
+        status = 0;
+    }
+
+    //check diagonals
+    for(let i=0; i<3; i++){
+        if
+    }
+}
 
 
 for(let i = 0; i <list.length; i++)
