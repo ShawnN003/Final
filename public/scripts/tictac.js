@@ -5,7 +5,8 @@ let list = document.querySelectorAll('div');
 
 let boardStatus =['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'];
 let player = "x";
-
+let count = '0';
+let choice = -1;
 
 
 for(let i = 0; i <list.length; i++)
@@ -36,12 +37,30 @@ for(let i = 0; i <list.length; i++)
     }
     list[i].onclick = function()
     {
+        
+
+        
+        count++
+        
+        if(boardStatus[i] == 'x' || boardStatus[i] == 'circle'){
+
+        }else{
         list[i].id = player;
         boardStatus[i]= player;
+        }
+
+        if(choice > -1){
+            console.log("second click");
+            list[choice].id = '';
+            boardStatus[choice]= 'empty';
+            console.log(boardStatus);
+            }
+        choice = i;
     }
 
     list[i].ondblclick = function()
     {
+        count--;
         list[i].className = "";
         boardStatus[i] = "";
     }
@@ -49,6 +68,7 @@ for(let i = 0; i <list.length; i++)
 
 document.getElementById('user').onclick = function()
 {
+    count=0;
     console.log(checkWin(player));
     if(player === 'x'){
         document.getElementById('uOne').style.display = 'none';
