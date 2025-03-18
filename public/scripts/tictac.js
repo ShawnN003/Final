@@ -58,17 +58,11 @@ for(let i = 0; i <list.length; i++)
         choice = i;
     }
 
-    list[i].ondblclick = function()
-    {
-        count--;
-        list[i].className = "";
-        boardStatus[i] = "";
-    }
 }
 
 document.getElementById('user').onclick = function()
 {
-    count=0;
+    choice = -1;
     console.log(checkWin(player));
     if(player === 'x'){
         document.getElementById('uOne').style.display = 'none';
