@@ -134,10 +134,6 @@ app.post('/rpsPlayerTwo', async(req, res) =>{
     res.render('rpsPlayerTwo', {userData});
 });
 
-
-
-
-
 app.post('/winner', async(req, res) =>{
     const conn = await connect();
 

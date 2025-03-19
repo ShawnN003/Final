@@ -5,7 +5,6 @@ function validate() {
     let isValid = true;
     let playerOne = document.getElementById("userOne").value.trim();
     let playerTwo = document.getElementById("userTwo").value.trim();
-
     
 
     if(playerOne === "")
@@ -18,13 +17,6 @@ function validate() {
         document.getElementById("playerTwoName").style.display = "block";
         isValid = false;
     }
-    // let choice = document.getElementById("choice").value;
-    // if(choice !=  "rock" || choice !=  "paper" ||choice !=  "scissors")
-    // {
-    //     alert("Testing!");
-    //     document.getElementById("err-playerOne").style.display = "block";
-    //     isValid = false;
-    // }
     return isValid;
 }
 function clearErrors() 

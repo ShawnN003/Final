@@ -22,7 +22,6 @@ span{
     grid-template-rows: 230px 230px 230px;
     margin-left: auto;
     margin-right: auto;
-    
 }
 
 div{
@@ -41,7 +40,37 @@ div{
     background-image:url("../x.jpg");
     padding:auto;
 }
+
 #circle{
     background-image:url("../circle.png");
     background-size: contain;
+}
+
+@media screen and (max-width: 600px){
+    #board{
+        display: grid;
+        grid-template-columns: 130px 130px 130px;
+        grid-template-rows: 130px 130px 130px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    div{
+        border: 1px solid white;
+        width: 130px;
+        height: 130px;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+    #x{
+        background-image:url("../x.jpg");
+        background-size: contain;
+        padding:auto;
+    }
+    
+    #circle{
+        background-image:url("../circle.png");
+        background-size: contain;
+    }
 }

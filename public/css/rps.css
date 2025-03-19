@@ -26,3 +26,16 @@ form{
 img{
     height: 100%;
 }
+@media screen and (max-width: 600px){
+    img{
+        height: 500%;
+    }
+    .rps-button{
+        width: 30px;
+        height: 30px;
+        }
+    h1{
+        color: white;
+        padding-top: 130px;
+    }
+}

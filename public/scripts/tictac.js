@@ -1,7 +1,4 @@
-
 let list = document.querySelectorAll('div');
-
-//I don't see an output id in ttt.ejs
 
 let boardStatus =['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'];
 let player = "x";
@@ -39,7 +36,6 @@ for(let i = 0; i <list.length; i++)
     
     list[i].onclick = function()
     {
-
         if(boardStatus[i] == 'empty'){
             if(choice == i){
 
@@ -67,7 +63,6 @@ for(let i = 0; i <list.length; i++)
             }
         }
     }
-        
 }
 
 document.getElementById('user').onclick = function()
@@ -89,7 +84,6 @@ document.getElementById('user').onclick = function()
         const userOne = document.getElementById('uOne').innerHTML;
         const userTwo = document.getElementById('uTwo').innerHTML;
         
-        alert(player == 'x');
         if(player == 'x'){
             winner.value = userOne;
          
@@ -114,8 +108,6 @@ document.getElementById('user').onclick = function()
         document.getElementById('uTwo').style.display =  'none';
         player = 'x';
     }
-    
-    
 }
 
 function checkWin(player){
