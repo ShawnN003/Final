@@ -14,60 +14,43 @@ for(let i = 0; i <list.length; i++)
 {
     list[i].onmouseover = function()
     {
-        if(list[i].className == player)
-        {
-
-        }
+        if(list[i].className == player){}
         else 
         {
             list[i].className = "hover";
-
         }
     }
     list[i].onmouseout = function()
     {
-        if(list[i].className == player)
-        {
-
-        }
+        if(list[i].className == player){}
         else 
         {
             list[i].className = " ";
-
         }
     }
     
     list[i].onclick = function()
     {
-
         if(boardStatus[i] == 'empty'){
             if(choice == i){
 
             }else{
-            if(boardStatus[i] == 'x' || boardStatus[i] == 'circle'){
-    
-            }else{
+            if(boardStatus[i] == 'x' || boardStatus[i] == 'circle'){}
+            else{
             list[i].id = player;
             boardStatus[i]= player;
             }
-    
             if(choice > -1){
-                console.log("second click");
-                if(list[i] != player){
-    
-                }
+                if(list[i] != player){}
                 list[choice].id = '';
                 boardStatus[choice]= 'empty';
-                console.log(boardStatus);
                 }
                 if(list[i].id == player){
                     choice = i;
                 }
-            
             }
         }
-    }
-        
+    }    
 }
 
 document.getElementById('user').onclick = function()
@@ -78,21 +61,17 @@ document.getElementById('user').onclick = function()
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = 'tttWinner';
-
         const winner = document.createElement('input');
         winner.type = 'hidden';
         winner.name = 'winner';
         const loser = document.createElement('input');
         loser.type = 'hidden';
         loser.name = 'loser';
-
         const userOne = document.getElementById('uOne').innerHTML;
         const userTwo = document.getElementById('uTwo').innerHTML;
         
-        alert(player == 'x');
         if(player == 'x'){
             winner.value = userOne;
-         
             loser.value = userTwo;
         }else if(player == 'circle'){
             winner.value = userTwo;
@@ -100,8 +79,7 @@ document.getElementById('user').onclick = function()
         }
         form.appendChild(winner);
         form.appendChild(loser);
-        document.body.appendChild(form)
-       
+        document.body.appendChild(form);
         form.submit();
         return;
     }
@@ -114,20 +92,16 @@ document.getElementById('user').onclick = function()
         document.getElementById('uTwo').style.display =  'none';
         player = 'x';
     }
-    
-    
 }
 
-function checkWin(player){
-    console.log("checking");
+function checkWin(player){  
     let status = 0;
-    console.log(boardStatus);
     let newArr = [
         [boardStatus[0],boardStatus[1],boardStatus[2],],
         [boardStatus[3],boardStatus[4],boardStatus[5],],
         [boardStatus[6],boardStatus[7],boardStatus[8],]
     ];
-    console.log(newArr);
+    
     //check rows
     for(let i=0; i < 3; i++){
         for(let j=0; j < 3; j++){
@@ -136,7 +110,6 @@ function checkWin(player){
                 status++;
                 if(status >= 3){
                     status = 0;
-                    
                     return true;
                 }
             }
@@ -151,7 +124,6 @@ function checkWin(player){
                 status++;
                 if(status >= 3){
                     status = 0;
-                    
                     return true;
                 }
             }
@@ -161,11 +133,9 @@ function checkWin(player){
 
     //check diagonals
     if(player == newArr[0][0] && player == newArr[1][1] && player == newArr[2][2]){
-        
         return true;
     }
     if(player == newArr[0][2] && player == newArr[1][1] && player == newArr[2][0]){
-        
         return true;
     }
     return false;

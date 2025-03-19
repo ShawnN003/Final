@@ -84,14 +84,29 @@ app.post('/games', async(req, res) =>{
         PRIMARY KEY (userid)
         )`);
     try{
-       const insertQuery = await conn.query(`insert into scores 
-        (userid)
-        values (?)`,
+        const userOneCheck = await conn.query(`select * from scores
+            WHERE userid = ?`,
         [userData.userOne]);
-        const insertQueryTwo = await conn.query(`insert into scores 
-        (userid)
-        values (?)`,
-        [userData.userTwo]); 
+        console.log(userOneCheck);
+        const userTwoCheck = await conn.query(`select * from scores
+            WHERE userid = ?`,
+        [userData.userTwo]);
+        
+
+        if(userOneCheck.length < 1){
+            const insertQuery = await conn.query(`insert into scores 
+                (userid, score)
+                values (?, ?)`,
+                [userData.userOne, 0]);
+        }
+       
+        if(userTwoCheck.length < 1){
+            const insertQueryTwo = await conn.query(`insert into scores 
+                (userid, score)
+                values (?, ?)`,
+                [userData.userTwo, 0]);
+        }
+         
     }catch (err){
         console.log(err);
     }
@@ -194,8 +209,29 @@ app.post('/tttWinner', async(req, res) =>{
         userTwo: req.body.loser
     }
     console.log(result);
+
+    try{
+        const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [result]);
+        let newScore = 0;
+        
+        console.log("+1")
+        newScore = currentScore[0].score +1;
+        
+        console.log("updated score: " + newScore)
+        console.log("victor: " + result);
+
+        const database = await conn.query(`UPDATE scores 
+            SET score = ?
+            WHERE userid = ?`,
+        [newScore, result]);
+        
+        conn.release();
+        res.render('tttWinner', {result, userData})    
+    }catch(err){
+        console.log(err);
+    }
+
     conn.release();
-    res.render('tttWinner', {result, userData})
 });
 
 app.get('/scores', async(req, res) =>{
