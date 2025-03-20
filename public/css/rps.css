@@ -26,16 +26,12 @@ form{
 img{
     height: 100%;
 }
-@media screen and (max-width: 600px){
-    img{
-        height: 500%;
-    }
-    .rps-button{
-        width: 30px;
-        height: 30px;
-        }
+@media screen and (max-width: 1015px){
     h1{
-        color: white;
         padding-top: 130px;
+    }
+    #game-container{
+        width:700px;
+        background-size:1000px ;
     }
 }
