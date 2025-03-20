@@ -22,9 +22,9 @@ h1,h2,h3,label{
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 1000;
-  height: 4rem;
+  height: 2rem;
   text-align: center;
 }
 
