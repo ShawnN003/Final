@@ -9,11 +9,17 @@
 <body>
     <form action = "games" method = "post">
         
-        <h1> <%=result%> Wins!</h1><br><br>
-        <input type="hidden" name="userOne" value="<%= userData.userOne%>">
-        <input type="hidden" name="userTwo" value="<%= userData.userTwo%>">
-        <input type="submit" value = "Game Options">
-
+        <%if(result == 'tie'){ %>
+            <h1>TIE...</h1>
+            <input type="hidden" name="userOne" value="<%= userData.userOne%>">
+            <input type="hidden" name="userTwo" value="<%= userData.userTwo%>">
+            <input type="submit" value = "Game Options">
+        <%}else{%>
+            <h1> <%=result%> Wins!</h1><br><br>
+            <input type="hidden" name="userOne" value="<%= userData.userOne%>">
+            <input type="hidden" name="userTwo" value="<%= userData.userTwo%>">
+            <input type="submit" value = "Game Options">
+        <%}%>
     </form>
     <br><br>
 

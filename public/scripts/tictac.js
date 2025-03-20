@@ -54,7 +54,29 @@ for(let i = 0; i <list.length; i++)
 document.getElementById('user').onclick = function()
 {
     choice = -1;
-    
+    if(checkFull()){
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'tttWinner';
+        const winner = document.createElement('input');
+        winner.type = 'hidden';
+        winner.name = 'winner';
+        const loser = document.createElement('input');
+        loser.type = 'hidden';
+        loser.name = 'loser';
+        const tie = document.createElement('input');
+        tie.type = 'hidden';
+        tie.name = 'tie';
+        winner.value = document.getElementById('uOne').innerHTML;
+        loser.value = document.getElementById('uTwo').innerHTML;
+        tie.value = 'tie';
+        form.appendChild(winner);
+        form.appendChild(loser);
+        form.appendChild(tie);
+        document.body.appendChild(form);
+        form.submit();
+        return;
+    }
     if(checkWin(player)){
         const form = document.createElement('form');
         form.method = 'POST';
@@ -81,6 +103,8 @@ document.getElementById('user').onclick = function()
         form.submit();
         return;
     }
+    
+
     if(player === 'x'){
         document.getElementById('uOne').style.display = 'none';
         document.getElementById('uTwo').style.display =  'block';
@@ -92,6 +116,19 @@ document.getElementById('user').onclick = function()
     }
 }
 
+function checkFull(){
+    let check = true;
+    console.log(`checking ${boardStatus}`);
+
+    for(let i=0; i<boardStatus.length; i++){
+        console.log(boardStatus[i]);
+        if(boardStatus[i] === 'empty'){
+            check = false;
+            console.log("empty space found");
+        }
+    }
+    return check;
+}
 function checkWin(player){  
     let status = 0;
     let newArr = [
@@ -136,5 +173,7 @@ function checkWin(player){
     if(player == newArr[0][2] && player == newArr[1][1] && player == newArr[2][0]){
         return true;
     }
+
+
     return false;
 }

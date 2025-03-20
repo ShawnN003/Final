@@ -17,6 +17,12 @@ function validate() {
         document.getElementById("playerTwoName").style.display = "block";
         isValid = false;
     }
+    if(playerTwo === playerOne){
+        const names = document.getElementById("playerTwoName");
+        names.innerHTML = "Choose a unique username";
+        names.style.display = "block";
+        isValid = false;
+    }
     return isValid;
 }
 function clearErrors() 

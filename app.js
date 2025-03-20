@@ -197,15 +197,20 @@ app.post('/winner', async(req, res) =>{
 });
 
 app.post('/tttWinner', async(req, res) =>{
-    const conn = await connect();
-    console.log(req.body);
     let result = req.body.winner;
+    console.log(req.body.tie);
+    const conn = await connect();
+    
     const userData = {
-        userOne: result,
+        userOne: req.body.winner,
         userTwo: req.body.loser
     }
-    console.log(result);
 
+    if(req.body.tie === 'tie'){
+        result = 'tie';
+        res.render('tttWinner',{result, userData});
+        return;
+    }
     try{
         const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [result]);
         let newScore = 0;
@@ -213,8 +218,6 @@ app.post('/tttWinner', async(req, res) =>{
         console.log("+1")
         newScore = currentScore[0].score +1;
         
-        console.log("updated score: " + newScore)
-        console.log("victor: " + result);
 
         const database = await conn.query(`UPDATE scores 
             SET score = ?
