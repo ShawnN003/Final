@@ -212,7 +212,7 @@ app.post('/tttWinner', async(req, res) =>{
         return;
     }
     try{
-        const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [result]);
+        const currentScore = await conn.query('SELECT score FROM scores WHERE userid = ?', [req.body.winner]);
         let newScore = 0;
         
         console.log("+1")
